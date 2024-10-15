@@ -22,6 +22,7 @@ public class ItemService {
 
     public Item createItem(Item item) {
         log.info("Item Create method called : {} ", item);
+
         return itemRepo.save(item);
     }
 
