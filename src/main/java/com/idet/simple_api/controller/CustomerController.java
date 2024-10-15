@@ -17,6 +17,7 @@ import java.util.Map;
 //import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/customer/")
 public class CustomerController {
 
@@ -75,7 +76,10 @@ public class CustomerController {
     }
 
     @PostMapping()
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> createCustomer(@RequestParam("customerId") String customerId ,
+                                                   @RequestParam("name") String name,
+                                                   @RequestParam("address") String address ,
+                                                   @RequestParam("salary") String salary ) {
 //        CustomerService customerService = new CustomerService();
 
 //        option 1
@@ -83,6 +87,12 @@ public class CustomerController {
 //        return new ResponseEntity<>(serviceCustomer, HttpStatus.OK);
 
 //        option 2
+
+        Customer customer = new Customer();
+        customer.setCustomerId(customerId);
+        customer.setName(name);
+        customer.setAddress(address);
+        customer.setSalary(Double.parseDouble(salary));
         return new ResponseEntity<>(customerService.createCustomer(customer), HttpStatus.OK);
 
     }
