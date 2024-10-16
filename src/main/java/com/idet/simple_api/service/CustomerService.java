@@ -26,6 +26,7 @@ public class CustomerService {
         System.out.println("CustomerService.createCustomer");
 //        Customer savedCustomer = customerRepo.save(customer);
 //        return savedCustomer;
+        customer.setName("ABC_" + customer.getName());
         return customerRepo.save(customer);
     }
 

@@ -23,12 +23,30 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private Set<OrderDetails> orderDetails;
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Set<OrderDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(Set<OrderDetails> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
     public Order() {
     }
 
-    public Order(int orderId, Date orderDate) {
+    public Order(int orderId, Date orderDate, Customer customer, Set<OrderDetails> orderDetails) {
         this.orderId = orderId;
         this.orderDate = orderDate;
+        this.customer = customer;
+        this.orderDetails = orderDetails;
     }
 
     public int getOrderId() {
