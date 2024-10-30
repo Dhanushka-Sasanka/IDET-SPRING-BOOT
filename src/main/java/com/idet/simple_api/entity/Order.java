@@ -17,7 +17,7 @@ public class Order {
     private Date orderDate;
 
     @ManyToOne
-    @JoinColumn(name = "customerId", insertable = false, updatable = false)
+    @JoinColumn(name = "customerId")
     private Customer customer;
 
     @OneToMany(mappedBy = "order")

@@ -80,7 +80,7 @@ public class ItemService {
             existsItem.setCode(item.getCode());
             existsItem.setDescription(item.getDescription());
             existsItem.setUnitPrice(item.getUnitPrice());
-            existsItem.setQytOnHand(item.getQytOnHand());
+            existsItem.setQtyOnHand(item.getQtyOnHand());
             itemRepo.save(existsItem);
         });
 
@@ -114,7 +114,7 @@ public class ItemService {
             if(item.getCode() != null) existsItem.setCode(item.getCode()); ;
             if(item.getDescription() != null) existsItem.setDescription(item.getDescription()) ;
             if(item.getUnitPrice() != 0.00 ) existsItem.setUnitPrice(item.getUnitPrice());
-            if(item.getQytOnHand() != 0)existsItem.setQytOnHand(item.getQytOnHand());
+            if(item.getQtyOnHand() != 0)existsItem.setQtyOnHand(item.getQtyOnHand());
             itemRepo.save(existsItem);
         });
 

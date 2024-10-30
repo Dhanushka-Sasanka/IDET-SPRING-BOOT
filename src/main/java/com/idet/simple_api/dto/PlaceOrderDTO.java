@@ -17,7 +17,7 @@ import java.util.List;
 public class PlaceOrderDTO {
 
     private Customer customer;
-    private List<Item> items;
+    private List<SaleItemDTO> items;
 
 
 }

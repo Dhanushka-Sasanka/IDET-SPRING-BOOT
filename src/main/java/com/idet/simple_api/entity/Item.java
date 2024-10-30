@@ -15,7 +15,7 @@ public class Item {
     private String code;
     private String description;
     private double unitPrice;
-    private int qytOnHand;
+    private int qtyOnHand;
 
     @OneToMany(mappedBy = "item")
     private Set<OrderDetails> orderDetails;
@@ -23,11 +23,11 @@ public class Item {
     public Item() {
     }
 
-    public Item(String code, String description, double unitPrice, int qytOnHand) {
+    public Item(String code, String description, double unitPrice, int qtyOnHand) {
         this.code = code;
         this.description = description;
         this.unitPrice = unitPrice;
-        this.qytOnHand = qytOnHand;
+        this.qtyOnHand = qtyOnHand;
     }
 
     public String getCode() {
@@ -54,12 +54,12 @@ public class Item {
         this.unitPrice = unitPrice;
     }
 
-    public int getQytOnHand() {
-        return qytOnHand;
+    public int getQtyOnHand() {
+        return qtyOnHand;
     }
 
-    public void setQytOnHand(int qytOnHand) {
-        this.qytOnHand = qytOnHand;
+    public void setQtyOnHand(int qytOnHand) {
+        this.qtyOnHand = qytOnHand;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class Item {
                 "code='" + code + '\'' +
                 ", description='" + description + '\'' +
                 ", unitPrice=" + unitPrice +
-                ", qytOnHand=" + qytOnHand +
+                ", qytOnHand=" + qtyOnHand +
                 '}';
     }
 }

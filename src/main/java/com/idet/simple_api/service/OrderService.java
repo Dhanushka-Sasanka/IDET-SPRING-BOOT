@@ -39,19 +39,25 @@ public class OrderService {
 
         placeOrderDTO.getItems().forEach(item -> {
 
-            Item dbItem = itemRepo.findById(item.getCode()).orElseThrow();
+            Item dbItem = itemRepo.findById(item.getProductCode()).orElseThrow();
 
             OrderDetails orderDetails = new OrderDetails();
             orderDetails.setOrder(savedOrder);
-            orderDetails.setDiscount(0);
+
+            double discount = (item.getDiscount() / 100) * item.getUnitPrice();
             orderDetails.setItem(dbItem);
-            orderDetails.setQty(item.getQytOnHand());
+
+            orderDetails.setDiscount(discount);
+
+            orderDetails.setQty(item.getQty());
+
             orderDetails.setUnitPrice(item.getUnitPrice());
-            orderDetails.setTotal(item.getUnitPrice() * item.getQytOnHand());
+
+            orderDetails.setTotal((item.getUnitPrice() - discount) * item.getQty());
 
             orderDetailRepo.save(orderDetails);
 
-            dbItem.setQytOnHand(dbItem.getQytOnHand() - item.getQytOnHand());
+            dbItem.setQtyOnHand(dbItem.getQtyOnHand() - item.getQty());
             itemRepo.save(dbItem);
         });
 
