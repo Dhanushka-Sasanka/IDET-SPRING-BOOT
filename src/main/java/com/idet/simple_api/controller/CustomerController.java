@@ -76,10 +76,10 @@ public class CustomerController {
     }
 
     @PostMapping()
-    public ResponseEntity<Customer> createCustomer(@RequestParam("customerId") String customerId ,
+    public ResponseEntity<Customer> createCustomer(@RequestParam("customerId") String customerId,
                                                    @RequestParam("name") String name,
-                                                   @RequestParam("address") String address ,
-                                                   @RequestParam("salary") String salary ) {
+                                                   @RequestParam("address") String address,
+                                                   @RequestParam("salary") String salary) {
 //        CustomerService customerService = new CustomerService();
 
 //        option 1
@@ -116,17 +116,37 @@ public class CustomerController {
     }
 
     @PutMapping("{customerId}")
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer , @PathVariable("customerId") String customerId ) {
-        Customer updateCustomer = customerService.updateCustomer(customer,customerId);
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, @PathVariable("customerId") String customerId) {
+        Customer updateCustomer = customerService.updateCustomer(customer, customerId);
         return updateCustomer != null ? new ResponseEntity<>(updateCustomer, HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
     }
 
     @PatchMapping("{customerId}")
-    public ResponseEntity<Customer> updatePartialCustomer(@RequestBody Customer customer , @PathVariable("customerId") String customerId ) {
-        Customer updateCustomer = customerService.updatePartialCustomer(customer,customerId);
+    public ResponseEntity<Customer> updatePartialCustomer(@RequestBody Customer customer, @PathVariable("customerId") String customerId) {
+        Customer updateCustomer = customerService.updatePartialCustomer(customer, customerId);
         return updateCustomer != null ? new ResponseEntity<>(updateCustomer, HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
+    }
+
+    @GetMapping("find-customer-by-name/{customerName}")
+    public ResponseEntity<Customer> getCustomerByName(@PathVariable("customerName") String customerName) {
+        return new ResponseEntity<>(customerService.getCustomerByName(customerName), HttpStatus.OK);
+    }
+
+    @GetMapping("find-all-customer-by-name/{customerName}")
+    public ResponseEntity<List<Customer>> getAllCustomersByNameStart(@PathVariable("customerName") String customerName) {
+        return new ResponseEntity<>(customerService.getAllCustomersByNameStart(customerName), HttpStatus.OK);
+    }
+
+    @GetMapping("find-salary-range-customer/{range1}/{range2}")
+    public ResponseEntity<List<Customer>> findCustomersBySalaryRange(@PathVariable("range1") double range1, @PathVariable("range2") double range2) {
+        return new ResponseEntity<>(customerService.findCustomersBySalaryRange(range1, range2), HttpStatus.OK);
+    }
+
+    @GetMapping("find-salary-grater-customer/{range1}")
+    public ResponseEntity<List<Customer>> findCustomersBySalaryGreaterThan(@PathVariable("range1") double range1) {
+        return new ResponseEntity<>(customerService.findCustomersBySalaryGreaterThan(range1), HttpStatus.OK);
     }
 
 }

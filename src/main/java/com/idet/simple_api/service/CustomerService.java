@@ -99,4 +99,22 @@ public class CustomerService {
             return null;
         }
     }
+
+    public Customer getCustomerByName(String name) {
+        return customerRepo.findByName(name);
+    }
+
+    public List<Customer> getAllCustomersByNameStart(String name) {
+        return customerRepo.findByNameStartingWith(name);
+    }
+
+    public List<Customer> findCustomersBySalaryRange(double salaryRange1, double salaryRange2) {
+        return customerRepo.findCustomersBySalaryRange(salaryRange1, salaryRange2);
+    }
+
+    public List<Customer> findCustomersBySalaryGreaterThan(double salaryRange1) {
+        return customerRepo.findCustomersBySalaryGreaterThan(salaryRange1);
+    }
+
+
 }
