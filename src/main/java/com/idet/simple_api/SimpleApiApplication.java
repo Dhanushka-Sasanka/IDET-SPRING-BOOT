@@ -1,8 +1,12 @@
 package com.idet.simple_api;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/*@OpenAPIDefinition(info = @Info(title = "Foo API",
+        description = "Foo description", version = "v1"))*/
 @SpringBootApplication
 public class SimpleApiApplication {
 

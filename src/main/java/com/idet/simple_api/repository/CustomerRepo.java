@@ -26,6 +26,9 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
     @Query(value = "SELECT * from Customer c where c.salary > :range1", nativeQuery = true)
     List<Customer> findCustomersBySalaryGreaterThan(double range1);
 
+//=========================for pos system project===========================================================
+
+
 
 
 }
